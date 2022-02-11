@@ -7,7 +7,7 @@ from odoo.exceptions import ValidationError
 
 
 def get_default_img(name_image):
-        with open(modules.get_module_resource('mod_exchanger', 'static/description', name_image),
+        with open(modules.get_module_resource('Holspital_Tool', 'static/description', name_image),
               'rb') as f:
             return base64.b64encode(f.read())
 

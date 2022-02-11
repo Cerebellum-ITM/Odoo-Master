@@ -7,7 +7,7 @@
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">Holspital_Tool.report_patient_resume</field>
             <field name="report_file">Holspital_Tool.report_patient_resume</field>
-            <field name="print_report_name">'Student Card - %s' % (object.name)</field>
+            <field name="print_report_name">'Student Card - %s' % (object.patient_name)</field>
             <field name="binding_model_id" ref="model_hospital_patient"/>
     </record>
 

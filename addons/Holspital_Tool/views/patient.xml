@@ -124,6 +124,6 @@
             </field>
     </record>
     <!-- Menu item declaration -->
-    <menuitem id="hospital_menu" name="Control de hospital" sequence = "0" web_icon="mod_exchanger,static/description/icon.png" />
+    <menuitem id="hospital_menu" name="Control de hospital" sequence = "0" web_icon="Holspital_Tool,static/description/icon.png" />
     <menuitem id="hospital_patient" name="Paciente" parent = "hospital_menu" action = "action_patient"/>
 </odoo>
