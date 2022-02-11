@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+
+    <record id="action_patients" model="ir.actions.report">
+            <field name="name">Student ID Card</field>
+            <field name="model">hospital.patient</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">Holspital_Tool.report_patient_resume</field>
+            <field name="report_file">Holspital_Tool.report_patient_resume</field>
+            <field name="print_report_name">'Student Card - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_hospital_patient"/>
+    </record>
+
+</odoo>
