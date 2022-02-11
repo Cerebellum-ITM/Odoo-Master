@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- view type specification -->
+
+    <record id="patient_view_tree" model="ir.ui.view">
+        <field name="name">Hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Base de datos">
+                    <field name="patien_full_name"/>
+                    <field name="patient_last_name"/>
+                    <field name="patient_state"/>
+                    <field name="patient_id"/>
+                    <field name="patient_age"/>
+                    <field name="patient_gender"/>
+                    <field name="patient_height"/>
+                    <field name="patient_grade"/>
+                    <field name="patient_age_group"/>
+                    <field name="patient_photo"/>
+                    <field name="patient_last_modify"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="patient_view_form" model="ir.ui.view">
+            <field name="name">hospital.patient.form</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <form string="Nuevo paciente">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="open_patient_appointments" string="citas:" type="object" class="oe_stat_button" icon="fa-calendar">
+                                <field name="patient_appointment_count"/>
+                            </button>
+                            <button name="create_appointment" string="Crear cita" type="object" class="oe_stat_button" icon="fa-ticket">
+                            </button>
+                        </div>
+                        <div class="oe_title"><field name="patient_photo" widget="image" class="oe_avatar" options="{'preview_image': 'patient_photo'}"/>
+                        </div>
+
+                        <div class="oe_title">
+                            <h1>
+                                Paciente: 
+                                <field name="patien_full_name"/>
+                            </h1>
+                            <h3>
+                                Matricula: 
+                                <field name="patient_id"/>
+                            </h3>
+                        </div>
+                        
+                        <group>    
+                            <group>
+                                <field name="patient_name"/>
+                                <field name="patient_last_name"/>
+                                <field name="patient_age"/>
+                                <field name="patient_id"/>
+                                <field name="patient_age_group"/>
+                            </group>
+                            <group>
+                                <field name="patient_gender" />
+                                <field name="patient_state"/>
+                                <field name="patient_height"/>
+                                <field name="patient_grade"/>
+                                <field name="patient_last_modify"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page name="last_appointments" string="Ultimas citas">
+                                <tree string="Base de datos">
+                                    <field name="patient_appointment_ids"/>
+                                </tree>        
+                            </page>
+
+                            <page name="contact_info" string="Información de contacto">
+                                <group>
+                                    <field name="patient_phone"/>
+                                    <field name="patien_email"/>
+                                </group>
+                            </page>
+
+                            <page name="payment_info" string="Información de pago">
+                                <group>
+                                    <field name="patient_payment_mode"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+    <!-- Search view -->
+    <record id="patient_view_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string = "Search patients">
+                <field name = "patient_name" filter_domain = "['|',('patient_name','ilike', self), ('patient_id','ilike', self)]"/>
+                <field name="patient_id"/>
+                <separator/>
+                <filter name="filter_by_state" string="Estado" domain="[('patient_state', '=', 'True')]"/>
+                <filter name="filter_by_id" string="Matricula" domain = "[('patient_id', 'ilike', 'HP')]" />
+                <filter name="filter_by_gender_male" string="Hombre" domain = "[('patient_gender', '=', 'male')]" />
+                <filter name="filter_by_gender_female" string="Mujer" domain = "[('patient_gender', '=', 'female')]" />
+                <filter name="filter_by_gender_group" string="Genero" context = "{'group_by':'patient_gender'}" />
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Action patient menu-->
+    <record id="action_patient" model="ir.actions.act_window">
+            <field name="name">Base de datos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea un nuevo paciente.
+                </p>
+            </field>
+    </record>
+    <!-- Menu item declaration -->
+    <menuitem id="hospital_menu" name="Control de hospital" sequence = "0" web_icon="mod_exchanger,static/description/icon.png" />
+    <menuitem id="hospital_patient" name="Paciente" parent = "hospital_menu" action = "action_patient"/>
+</odoo>
