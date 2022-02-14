@@ -8,7 +8,6 @@
         <field name="arch" type="xml">
             <tree string="Base de datos">
                     <field name="patien_full_name"/>
-                    <field name="patient_last_name"/>
                     <field name="patient_state"/>
                     <field name="patient_id"/>
                     <field name="patient_age"/>
@@ -37,9 +36,6 @@
                             <button name="create_appointment" string="Crear cita" type="object" class="oe_stat_button" icon="fa-ticket">
                             </button>
                         </div>
-                        <div class="oe_title"><field name="patient_photo" widget="image" class="oe_avatar" options="{'preview_image': 'patient_photo'}"/>
-                        </div>
-
                         <div class="oe_title">
                             <h1>
                                 Paciente: 
@@ -49,6 +45,8 @@
                                 Matricula: 
                                 <field name="patient_id"/>
                             </h3>
+                            <div class="oe_title"><field name="patient_photo" widget="image" class="oe_avatar" options="{'preview_image': 'patient_photo'}"/></div> 
+
                         </div>
                         
                         <group>    
