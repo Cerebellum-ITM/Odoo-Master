@@ -29,12 +29,14 @@
                     <header>
                     </header>
                     <sheet>
+
                         <div class="oe_button_box" name="button_box">
                             <button name="open_patient_appointments" string="citas:" type="object" class="oe_stat_button" icon="fa-calendar">
                                 <field name="patient_appointment_count"/>
                             </button>
                             <button name="create_appointment" string="Crear cita" type="object" class="oe_stat_button" icon="fa-ticket">
                             </button>
+                            <div class="oe_title"><field name="patient_photo" widget="image" class="oe_avatar" options="{'preview_image': 'patient_photo'}"/></div>
                         </div>
                         <div class="oe_title">
                             <h1>
@@ -45,8 +47,6 @@
                                 Matricula: 
                                 <field name="patient_id"/>
                             </h3>
-                            <div class="oe_title"><field name="patient_photo" widget="image" class="oe_avatar" options="{'preview_image': 'patient_photo'}"/></div> 
-
                         </div>
                         
                         <group>    
