@@ -9,7 +9,7 @@ def get_default_img(name_image):
               'rb') as f:
             return base64.b64encode(f.read())
 
-class SaleORder(models.Model):
+class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
 
